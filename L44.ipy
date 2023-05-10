@@ -1,0 +1,47 @@
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.linear_model import LinearRegression
+
+data = pd.read_csv(r'D:\Kursy\Machine Learning\Udemy-Mobilo\high_school_sat_gpa\high_school_sat_gpa.csv',
+                   sep=' ', usecols=['math_SAT','verb_SAT','high_GPA'])
+
+data.head()
+data.dtypes
+
+# plt.scatter(data['math_SAT'],data['high_GPA'])
+
+
+# lr_math = LinearRegression()
+# lr_math.fit(data['math_SAT'].values.reshape(-1,1)
+#             ,data['high_GPA'].values.reshape(-1,1))
+
+# x_min = data['math_SAT'].min()
+# x_max = data['math_SAT'].max()
+
+# plt.figure(figsize=(10,6))
+# plt.scatter(data['math_SAT'],data['high_GPA'],color='red')
+# plt.plot([x_min,x_max],lr_math.predict([[x_min],[x_max]]),color='blue')
+# plt.show()
+
+# plt.scatter(data['verb_SAT'],data['high_GPA'])
+# #plt.show()
+
+# lr_verb = LinearRegression()
+# lr_verb.fit(data['verb_SAT'].values.reshape(-1,1),
+#             data['high_GPA'].values.reshape(-1,1))
+
+# x_min = data['verb_SAT'].min()
+# x_max = data['verb_SAT'].max()
+
+# plt.figure(figsize=(10,6))
+# plt.scatter(data['verb_SAT'],data['high_GPA'],color='red')
+# plt.plot([x_min,x_max],lr_verb.predict([[x_min],[x_max]]),color='blue')
+# plt.show()
+
+lr_combined = LinearRegression()
+lr_combined.fit(data[['math_SAT','verb_SAT']].values,
+                data['high_GPA'].values.reshape(-1,1))
+
+student_john = np.array([600,650]).reshape(1,2)
+lr_combined.predict(student_john)

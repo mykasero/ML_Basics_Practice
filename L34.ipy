@@ -1,0 +1,36 @@
+import numpy as np
+
+# data = np.array([[10, 7, 4],[3, 2, 1]])
+# data
+
+# np.mean(data) #2a
+# np.mean(data,axis=0) #2b
+# np.mean(data, axis = 1) #2c
+
+# np.average(data) # 3a
+# np.average(data,axis = 0) #3b
+# np.average(data, axis = 1) #3c
+
+# np.average(data, axis = 1, weights=[0,1,1])
+# np.average(data, axis = 1, weights=[2,3,5])
+
+# np.var(data) #4a
+# np.var(data, axis = 0) #4b
+# np.var(data, axis = 1) #4c
+
+# np.std(data) #5a
+# np.std(data, axis = 0 ) #5b
+# np.std(data, axis = 1) #5c
+
+data = np.zeros((2, 1000000))
+data[0, :] = 1.0
+data[1, :] = 0.1
+np.mean(data, dtype=np.float32)
+np.mean(data, dtype=np.float64)
+
+data = np.zeros((2,10))
+data[0, :] = 1.0
+data[1, :] = 0.1
+np.mean(data, dtype=np.float32)
+np.mean(data, dtype = np.float64)
+

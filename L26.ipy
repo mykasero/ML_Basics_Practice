@@ -1,0 +1,23 @@
+import numpy as np
+
+X = np.arange(-25,25,1).reshape((10,5))
+
+ones = np.ones(X.shape)
+
+X_1 = np.append(X, ones, axis=1)
+
+w = np.random.rand(X_1.shape[1])
+
+def predict(x,w):
+    total_stimulation = np.dot(x,w)
+    
+    if total_stimulation>0:
+        y_pred = 1
+    else:
+        y_pred = -1
+    return y_pred
+    
+print(predict(X_1[0],w))
+
+for i in range(0,len(X_1[:,])):
+    print(predict(X_1[i],w))

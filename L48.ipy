@@ -1,0 +1,37 @@
+import numpy as np
+import pandas as pd
+
+diam_org = pd.read_csv(r'D:\Kursy\Machine Learning\Udemy-Mobilo\diamonds\diamonds.csv',
+                       usecols=['color','price'])
+
+diam = diam_org
+
+diam_org.head()
+
+diam_mean_original = diam_org.groupby(by='color').mean()
+
+import random
+
+missing_data = random.sample(range(0,diam.shape[0]),k=5)  
+
+# print(diam.loc[missing_data])
+
+diam.loc[missing_data,'price'] = np.NaN                         
+
+# print(diam.loc[missing_data])
+
+diam_mean_start = diam.groupby(by='color').mean()
+
+# print('Ori\n',diam_mean_original ,'\n Rand \n', diam_mean_start)
+
+# print(diam_mean_original-diam_mean_start)
+
+filter_nan = diam['price'].isnull()
+diam.loc[filter_nan, ]
+# print(filter_nan)
+#print(diam[filter_nan,])
+
+#print(diam.loc[filter_nan, 'color'].map(diam_mean_start['price']))
+diam.loc[filter_nan, 'price'] = diam.loc[filter_nan,'color'].map(diam_mean_start['price'])
+
+#print(diam.loc[filter_nan, 'price'])

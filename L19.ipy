@@ -1,0 +1,30 @@
+import numpy as np
+a = np.arange(start = 0,stop =20, step =1)
+a.shape
+a[0]
+a[3]
+a = a.reshape((2,10))
+a.shape
+a[0][3]
+a = a.reshape((2,5,2))
+a.shape
+a[0]
+a[0][3]
+a[0][3][1]
+
+b = np.arange(start=0,stop=40,step=2).reshape((4,5))
+
+a_python_list = [2**x for x in range(10)]
+
+c = np.array(a_python_list)
+
+zero_array = np.zeros(10)
+one_array = np.ones(10)
+empty_array = np.empty(100)
+lucky_array = np.full((5,5),13)
+
+diagonal_array = np.eye(5,5)
+
+random_array = np.random.random(10)
+
+linspace_array = np.linspace(100,200,5)
